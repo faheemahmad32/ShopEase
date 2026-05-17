@@ -50,7 +50,7 @@ router.get('/google/callback',
     };
 
     const encodedUser = encodeURIComponent(JSON.stringify(userData));
-    const redirectUrl = `http://localhost:5173/auth/google/success?user=${encodedUser}`;
+    const redirectUrl = `${process.env.CLIENT_URL}/auth/google/success?user=${encodedUser}`;
     console.log('Redirecting to:', redirectUrl);
     res.redirect(redirectUrl);
   }
