@@ -19,7 +19,7 @@ const app = express();
 // CORS
 app.use(cors({
   origin: [
-    process.env.CLIENT_URL || 'https://shop-ease-ochre.vercel.app',
+    process.env.CLIENT_URL || `shop-ease-nine-sigma.vercel.app`,
     'http://localhost:5173',
   ],
   credentials: true,
