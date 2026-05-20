@@ -162,6 +162,13 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS, 
   },
 });
+transporter.verify(function (error, success) {
+  if (error) {
+    console.error("❌ Transporter verify failed:", error);
+  } else {
+    console.log("✅ Transporter ready!");
+  }
+});
 
 
 const forgotPassword = async (req, res) => {
@@ -282,7 +289,8 @@ const sendRegisterOtp = async (req, res) => {
     });
     console.log("✅ Email sent!"); // ADD karo
     res.json({ success: true, message: 'OTP sent! Check your email.' });
-  } catch (error) {
+  } catch (error) { 
+    console.error("❌ Full Error:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
