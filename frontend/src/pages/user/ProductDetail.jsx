@@ -253,7 +253,7 @@ const handleBuyNow = () => {
              {product.stock === 0 ? (
               <p className="text-red-500 font-semibold text-sm mb-4">❌ Out of Stock</p>
                ) : product.stock <= 5 ? (
-              <p className="text-orange-500 font-semibold text-sm mb-4">⚠️ Sirf {product.stock} bacha hai!</p>
+              <p className="text-orange-500 font-semibold text-sm mb-4">⚠️ only {product.stock} left!</p>
               ) : (
               <p className="text-green-600 font-semibold text-sm mb-4">✅ In Stock</p>
             )}
@@ -309,7 +309,7 @@ const handleBuyNow = () => {
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Bhai thoda kam karo... 😄"
+                placeholder="writes your message"
                 rows={3}
                 className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
