@@ -242,6 +242,7 @@ const resetPassword = async (req, res) => {
 const sendRegisterOtp = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    console.log("📧 OTP request aaya:", email);
 
    
     const userExists = await User.findOne({ email });
@@ -259,9 +260,10 @@ const sendRegisterOtp = async (req, res) => {
       password,
       otp,
       otpExpiry,
-      
     });
-
+    console.log("✅ TempOtp saved, ab email bhej raha hu..."); // ADD karo
+    console.log("EMAIL_USER:", process.env.EMAIL_USER); // ADD karo
+    console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS); // ADD karo
     await transporter.sendMail({
       from: `"ShopEase" <${process.env.EMAIL_USER}>`,
       to: email,
@@ -278,7 +280,7 @@ const sendRegisterOtp = async (req, res) => {
         </div>
       `,
     });
-
+    console.log("✅ Email sent!"); // ADD karo
     res.json({ success: true, message: 'OTP sent! Check your email.' });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
